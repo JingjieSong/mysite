@@ -3,7 +3,7 @@ from .models import Question, Choice
 # Create your views here.
 
 
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Qeustion.objects.order_by('-pub_date')[:5]
+        return Question.objects.order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
